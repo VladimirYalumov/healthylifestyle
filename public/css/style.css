@@ -1,0 +1,20 @@
+.border1
+{
+    background: #4dc0b5; /* Цвет фона */
+    padding: 10px; /* Поля вокруг текста */
+}
+.border2
+{
+    background: white; /* Цвет фона */
+    padding: 10px; /* Поля вокруг текста */
+}
+
+.border3
+{
+    background: #b0d4f1; /* Цвет фона */
+    padding: 1px; /* Поля вокруг текста */
+}
+
+.content_div{
+    background-color: #1d68a7;
+}
