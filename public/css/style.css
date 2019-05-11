@@ -1,20 +1,21 @@
-.border1
-{
-    background: #4dc0b5; /* Цвет фона */
-    padding: 10px; /* Поля вокруг текста */
+.link {
+    opacity: 0.65;
+    text-decoration: none; /*убираем подчеркивание текста ссылок*/
+    color:#fff; /*меняем цвет ссылок*/
+    padding: 5px; /*добавляем отступ*/
+    display: block;
+    -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
+    -o-transition: all 0.3s 0.01s ease;
+    -webkit-transition: all 0.3s 0.01s ease;
+    font-weight: bold;
 }
-.border2
-{
-    background: white; /* Цвет фона */
-    padding: 10px; /* Поля вокруг текста */
+.link:hover {
+    color:#fff; /*меняем цвет ссылок*/
+    text-decoration: none;
+    opacity: 1;
 }
 
-.border3
-{
-    background: #b0d4f1; /* Цвет фона */
-    padding: 1px; /* Поля вокруг текста */
+.container{
+    margin: 40px;
 }
 
-.content_div{
-    background-color: #1d68a7;
-}

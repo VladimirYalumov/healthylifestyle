@@ -11,13 +11,11 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-
         $coach_user = \App\Role::create([
             'name' => 'Coach',
             'slug' => 'coach',
             'permissions' => [
-                'create_programm' => true,
-                'edit_programm' => true
+                'create_programm' => true
             ]
         ]);
 
@@ -26,9 +24,7 @@ class RoleSeeder extends Seeder
             'slug' => 'moderator',
             'permissions' => [
                 'publish_programm' => true,
-                'delete_programm' => true,
-                'watch_users' => true,
-                'delete_users' => true
+                'delete_programm' => true
             ]
         ]);
 

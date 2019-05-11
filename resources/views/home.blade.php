@@ -1,21 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div>
+    <h1>Личный кабинет</h1>
 
-        <div>
-            <div class="card">
-                <div>Dashboard</div>
-
-                <div>
-                    @if (session('status'))
-                        <div>
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    <p>You are logged in!</p>
-                </div>
+    <div>
+        @if (session('status'))
+            <div>
+                {{ session('status') }}
             </div>
-        </div>
+        @endif
+        @if (Auth::user()->hasRole('coach'))
+            <div>
+                <a href="{{route('coach')}}">Создать программу</a>
+            </div>
+        @endif
+    </div>
 </div>
 @endsection

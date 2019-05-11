@@ -22,4 +22,21 @@ class Role extends Model
         return $this->belongsToMany(User::class, 'role_user', 'roleID', 'userID');
     }
 
+    public function hasAccess(array $permissions) : bool
+    {
+        foreach ($permissions as $permission_value){
+            if ($this->hasPermission($permission_value)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function hasPermission($permission) : bool
+    {
+        return $this->permissions[$permission] ?? false;
+    }
+
+
+
 }

@@ -1,59 +1,53 @@
 @extends('layouts.app')
 @section('content')
-<div>
-    <div>{{ __('Login') }}</div>
 
-    <div>
+<div class="container-fluid">
+    <div class="col-12"><h1>Вход</h1></div>
+    <div class="col-12" style="padding: 15px;">
+
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
-            <div>
-                <label for="email">{{ __('E-Mail Address') }}</label>
+            <div class="form-group row">
+                <label for="email" class="col-form-label col-md-2 col-xs-2">Email</label>
 
-                <div>
-                    <input id="email" type="email" class="{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                <div class="col-md-5 col-xs-10">
+                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                     @if ($errors->has('email'))
-                        <span role="alert">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
+                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
                     @endif
                 </div>
             </div>
 
-            <div>
-                <label for="password">{{ __('Password') }}</label>
+            <div class="form-group row">
+                <label for="password" class="col-form-label col-md-2 col-xs-2">Пароль</label>
 
-                <div>
-                    <input id="password" type="password" class="{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                <div class="col-md-5 col-xs-10">
+                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required autocomplete="current-password">
 
                     @if ($errors->has('password'))
-                        <span role="alert">
-                            <strong>{{ $errors->first('password') }}</strong>
-                        </span>
+                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
                     @endif
                 </div>
             </div>
 
-            <div>
-                <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+            <div class="form-group row">
+                <div class="col-form-label col-md-3 col-xs-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                <label for="remember">
-                    {{ __('Remember Me') }}
-                </label>
+                        <label class="form-check-label" for="remember">
+                            Запомнить меня
+                        </label>
+                    </div>
+                </div>
             </div>
-
-            <div>
-                    <button type="submit">
-                        {{ __('Login') }}
-                    </button>
-
-                    @if (Route::has('password.request'))
-                        <a href="{{ route('password.request') }}">
-                            {{ __('Forgot Your Password?') }}
-                        </a>
-                    @endif
-            </div>
+            <button type="submit" class="btn btn-dark">Войти</button>
         </form>
     </div>
 </div>

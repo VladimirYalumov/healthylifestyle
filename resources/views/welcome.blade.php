@@ -1,18 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<div  class="content_div">
-        <h1>
-           Заголоок
-        </h1>
+    <div class = "container-fluid">
+        <div class="row">
+            <div class="col-12"><h1>Добро пожаловать</h1></div>
+            <div class="col-12 col-sm-9">
+                <div>
 
-        <div>
-            <p>Контент</p>
-            <p>Контент</p>
-            <p>Контент</p>
-            <p>Контент</p>
-            <p>Контент</p>
-            <p>Контент</p>
+                </div>
+            </div>
+            <div class="col-12 col-sm-3">
+            </div>
         </div>
-</div>
+    </div>
 @endsection

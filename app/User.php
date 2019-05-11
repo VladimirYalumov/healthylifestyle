@@ -3,19 +3,16 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     use Notifiable;
 
-    public $timestamps = false;
-
     protected $table = 'users';
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'email', 'password',
     ];
 
     protected $hidden = [
@@ -27,7 +24,22 @@ class User extends Authenticatable
     ];
 
     public function roles()
-{
-    return $this->belongsToMany(Role::class, 'role_user', 'userID', 'roleID');
-}
+    {
+        return $this->belongsToMany(Role::class, 'role_user', 'userID', 'roleID');
+    }
+
+    public function hasAccess(array $permissions) : bool
+    {
+        foreach ($this->roles as $role){
+            if ($role->hasAccess($permissions)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function hasRole($role_slug) : bool
+    {
+        return $this->roles()->where('slug', $role_slug)->count() == 1;
+    }
 }
