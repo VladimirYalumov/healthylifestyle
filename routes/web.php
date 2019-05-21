@@ -19,16 +19,11 @@ Route::get('/coach', function () {
     return view('coach');
 })->name("coach")->middleware('can:create_programm');
 
-
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/roles', function(){
-   $user = \Illuminate\Support\Facades\Auth::user();
+Route::get('/programs', 'ProgrammController@findAll')->name('programs');
 
-   return response()->json(['roles' => $user->roles]);
-});
-
-//Auth::routes();
+Route::get('/createprogramm', 'ProgrammController@create')->name('createprogramm')->middleware('can:create_programm');
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -39,13 +34,8 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
-// Password Reset Routes...
-Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
+Route::get('/roles', function(){
+    $user = \Illuminate\Support\Facades\Auth::user();
 
-// Email Verification Routes...
-Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
-Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
-Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
+    return response()->json(['roles' => $user->roles]);
+});

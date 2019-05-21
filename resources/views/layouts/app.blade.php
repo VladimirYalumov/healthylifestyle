@@ -16,6 +16,15 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        .gradient{
+            background: -webkit-linear-gradient(#a4e786, #5ad427);
+            background: -o-linear-gradient(#a4e786, #5ad427);
+            background: -moz-linear-gradient(#a4e786, #5ad427);
+            background: linear-gradient(to right, #3d68bf, #0d1423);
+        }
+    </style>
 </head>
 
 <body>
@@ -31,6 +40,9 @@
             <ul class = "navbar-nav mr-auto">
                 <li class="nav-item">
                     <a href="{{ url('/') }}" class="link nav-link"> Главная </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('programs') }}" class="link nav-link"> Программы </a>
                 </li>
             </ul>
 
@@ -60,7 +72,7 @@
         </div>
     </nav>
 
-    <main style="padding: 15px;">
+    <main class="gradient" style="padding: 15px; ">
         @yield('content')
     </main>
 

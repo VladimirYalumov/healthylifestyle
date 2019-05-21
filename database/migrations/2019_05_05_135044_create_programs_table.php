@@ -25,6 +25,7 @@ class CreateProgramsTable extends Migration
             $table->unsignedInteger('day_5');
             $table->unsignedInteger('day_6');
             $table->unsignedInteger('day_7');
+            $table->integer('days');
             $table->foreign('day_1')->references('id')->on('training')->nullable();
             $table->foreign('day_2')->references('id')->on('training')->nullable();
             $table->foreign('day_3')->references('id')->on('training')->nullable();
