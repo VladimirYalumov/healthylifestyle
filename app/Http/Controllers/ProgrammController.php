@@ -58,11 +58,12 @@ class ProgrammController extends Controller
             'day_7' => $training_days[7],
             'days' => $days
         ]);
-        return $programm;
+
+        return $this->findAll();
     }
 
     public function findAll(){
-        $programs = Programm::select('name', 'message', 'days')->get();
+        $programs = Programm::select('name', 'message', 'days', 'id')->get();
         return view('program_list', compact('programs'));
     }
 }

@@ -3,9 +3,10 @@
 @section('content')
     <div  class = "container-fluid">
         <div class="row bg-white">
-            <div class="col-12"><h1>Создание программы тренировок</h1></div>
+            <div class="col-12"><h1>@lang('content.coach_create_ht')</h1></div>
             <div class="col-12">
-                <form class="form-horizontal" method="GET" action="{{ route('createprogramm') }}">
+                <form class="form-horizontal" method="POST" action="{{ route('createprogram') }}">
+                    @csrf
                     <label for="name" class="col-form-label col-md-4 col-xs-12">Название тренировки</label>
                     <div class="col-md-6 col-6">
                         <input class="form-control col-md-6 col-xs-12" type="text" value="Название тренировки" id="name" name = "name">
@@ -39,6 +40,4 @@
     </div>
 
     <script src="js/form_script.js"></script>
-
-
 @endsection

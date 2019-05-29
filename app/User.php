@@ -12,16 +12,14 @@ class User extends Authenticatable
     protected $table = 'users';
 
     protected $fillable = [
-        'email', 'password',
+        'email', 'password', 'program_id', 'program_days', 'sex'
     ];
 
     protected $hidden = [
         'password', 'remember_token',
     ];
 
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    protected $casts = ['program_days' => 'array'];
 
     public function roles()
     {
@@ -41,5 +39,10 @@ class User extends Authenticatable
     public function hasRole($role_slug) : bool
     {
         return $this->roles()->where('slug', $role_slug)->count() == 1;
+    }
+
+    public function getID()
+    {
+        return $this->program_id;
     }
 }

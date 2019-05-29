@@ -1,15 +1,13 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::get('setlocale/{locale}', function ($locale) {
+    if (in_array($locale, \Config::get('app.locales')))
+    {
+        # Проверяем, что у пользователя выбран доступный язык
+        Session::put('locale', $locale);                    # И устанавливаем его в сессии под именем locale
+    }
+    return redirect()->back();                              # Редиректим его <s>взад</s> на ту же страницу
+});
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/programs', 'ProgrammController@findAll')->name('programs');
 
-Route::get('/createprogramm', 'ProgrammController@create')->name('createprogramm')->middleware('can:create_programm');
+Route::post('/createprogram', 'ProgrammController@create')->name('createprogram')->middleware('can:create_programm');
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

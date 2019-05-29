@@ -12,7 +12,7 @@ class Training extends Model
         'message', 'exercises'
     ];
 
-    protected $casts =[
+    protected $casts = [
         'exercises' => 'array'
     ];
 }
