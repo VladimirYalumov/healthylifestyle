@@ -17,6 +17,8 @@
             @if (Auth::user()->hasRole('coach'))
                 <div>
                     <a href="{{route('coach')}}">@lang('content.coach_create_ht')</a>
+                    <br>
+                    <a href="{{route('users_list')}}">@lang('content.coach_users_ht')</a>
                 </div>
             @endif
         </div>

@@ -5,6 +5,7 @@ use App\Training;
 use Illuminate\Http\Request;
 use App\Programm;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProgrammController extends Controller
 {
@@ -27,15 +28,7 @@ class ProgrammController extends Controller
     public function create(Request $request)
     {
         $days = (int)$request['days'];
-        $training_days = [
-            1 => NULL,
-            2 => NULL,
-            3 => NULL,
-            4 => NULL,
-            5 => NULL,
-            6 => NULL,
-            7 => NULL
-        ];
+        $training_days = [1 => NULL,2 => NULL,3 => NULL,4 => NULL,5 => NULL,6 => NULL,7 => NULL];
 
         for($i = 0; $i < $days; $i++)
         {
@@ -43,7 +36,6 @@ class ProgrammController extends Controller
             $trainingID = $this->addTraining($request, $day);
             $training_days[$day] = $trainingID;
         }
-
         $user = Auth::user()->id;
         $programm = Programm::create([
             'name' => $request['name'],
@@ -65,5 +57,22 @@ class ProgrammController extends Controller
     public function findAll(){
         $programs = Programm::select('name', 'message', 'days', 'id')->get();
         return view('program_list', compact('programs'));
+    }
+
+    public function findBest(Request $request)
+    {
+        $program = Programm::select(
+            DB::raw('count(users.sex) as users_count, 
+                programs.name as name,
+                programs.id as id'
+            )
+        )
+        ->join('users', 'program_id', '=', 'programs.id')
+        ->where('sex', $request['sex'])
+        ->groupBy('programs.id')
+        ->orderBy('users_count', 'desc')
+        ->first();
+
+        return $program;
     }
 }

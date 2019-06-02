@@ -95,21 +95,19 @@
         @yield('content')
     </main>
 
-
-
     <footer class="page-footer font-smallpt-4" style="background-color: #3d3d3e; color: whitesmoke; padding: 5px;">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-6 col-xs-12">
-            <h5 class="font-weight-bold">Контакты</h5>
+            <h5 class="font-weight-bold">@lang('content.footer_contacts')</h5>
             <ul  class="list-unstyled">
-                <li>Телефон: +7 978 032 53 93</li>
+                <li>@lang('content.footer_tel') +7 978 032 53 93</li>
                 <li>Email: vladimir.ylmv@gmail.com</li>
             </ul>
         </div>
 
         <div class="col-md-6 col-xs-12">
-          <h5 class="font-weight-bold">Следите за нами</h5>
+          <h5 class="font-weight-bold">@lang('content.footer_monitor')</h5>
             <ul class="list-unstyled">
                 <li>
                     <a href="https://vk.com/public181681950" style="color: whitesmoke;">ВКонтакте</a>
@@ -124,7 +122,7 @@
         </div>
       </div>
     </div>
-    <div class="footer-copyright text-center" style="padding: 5px;">© 2018 Copyright: Все права защищены</div>
+    <div class="footer-copyright text-center" style="padding: 5px;">© 2018 Copyright: @lang('content.footer_copy')</div>
   </footer>
 </body>
 </html>

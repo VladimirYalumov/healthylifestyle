@@ -17,6 +17,13 @@ Route::get('/coach', function () {
     return view('coach');
 })->name("coach")->middleware('can:create_programm');
 
+Route::get('/users_list', 'AdminController@showUsers')->name("users_list")->middleware('can:create_programm');
+Route::post('/delete_user', 'AdminController@deleteUser')->name("delete_user")->middleware('can:create_programm');
+
+Route::get('/coach', function () {
+    return view('coach');
+})->name("coach")->middleware('can:create_programm');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/programs', 'ProgrammController@findAll')->name('programs');

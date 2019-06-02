@@ -57,15 +57,7 @@ class HomeController extends Controller
         if($request['programm_days'] != NULL)
         {
             $days = $request['programm_days'] + 1;
-            $programm_days = [
-                0 => NULL,
-                1 => NULL,
-                2 => NULL,
-                3 => NULL,
-                4 => NULL,
-                5 => NULL,
-                6 => NULL
-            ];
+            $programm_days = [0 => NULL,1 => NULL,2 => NULL,3 => NULL,4 => NULL,5 => NULL,6 => NULL];
 
             for($i = 0; $i < $days; $i++)
             {
